@@ -1,44 +1,65 @@
- ;%include "along32.inc"
-
-SYS_EXIT  equ 1
-SYS_READ  equ 3
-SYS_WRITE equ 4
-STDIN     equ 0
-STDOUT    equ 1
-
+%include        'functions.asm'
 
 section .data
-	a dw 100 ; value for a
-	b dw 200 ; value for b
-	msg db "A*B-(A+B)/(A-B): "
-   	len equ $ - msg
+	a: dd 8
+	b: dd 4
+	aeq: dd "a = ", 0h
+	beq: dd "b = ", 0h
+	msg1: dd "(a*b) - ( (a+b) / (a-b) ) = ", 0h
+	diverror: dw "error, division by zero"
 	segment .bss
-	x resb 1
-	y resb 1
-	z resb 1
-section .text
+	z: resd 1
+	x: resd 1
+	y: resd 1
+	d: resd 1
+	f: resd 1
 
+
+section .text
 global main
 
 main:
-	mov eax, '5'
-	sub eax, '0'
-	mov ebx, '6'
-	sub ebx, '0'
-	add eax, ebx
+	mov eax, [a]
+	mov ebx, [b]
+	sub eax, ebx
+	jz zeroError
+	mov [z], eax
+
+	mov eax, [a]
+	mul ebx
 	mov [x], eax
 
-	mov ecx, msg
-	mov edx, len
-	mov ebx, 1
-	mov eax, 4
-	int 0x80
+	mov eax, [a]
+	add eax, ebx
+	mov [y], eax
 
-	mov ecx, x
-	mov edx, 1
-	mov ebx, 1
-	mov eax, 4
-	int 0x80
+	mov eax, [y]
+	mov ebx, [z]
+	div ebx
+	mov [d], eax
 
-	mov eax,1	;system call number (sys_exit)
-   	int 0x80
+	mov eax, [x]
+	mov ebx, [d]
+	sub eax, ebx
+	mov [f], eax
+
+	mov eax, aeq
+	call sprint
+	mov eax, [a]
+	call iprintLF
+
+	mov eax, beq
+	call sprint
+	mov eax, [b]
+	call iprintLF
+
+	mov eax, msg1
+	call sprint
+	mov eax, [f]
+	call iprintLF
+	call quit
+
+zeroError:
+	mov eax, diverror
+	call sprintLF
+	call quit
