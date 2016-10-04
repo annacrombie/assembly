@@ -1,3 +1,10 @@
+; Stone Tickle
+; October 4, 2016
+; this program reads in N integers and calculates the average
+; Revision History: 
+;
+; October 3, remove redundant push command
+
 %include    'along32.inc'
 
 section .data
