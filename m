@@ -1,3 +1,5 @@
+#!/bin/bash
+
 alongdir="along"
 if [[ $1 = clean ]]; then
 	rm "$alongdir/along32.o"
