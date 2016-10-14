@@ -1,10 +1,12 @@
 # assembly
 assignments for school in assembly
 
-run ./m <path to asm file in src/ or just name of asm file in src>
-ex. ./m src/01_math.asm
-    ./m 01_math.asm
-    ./m 01_math
+run `./m <path or name of asm file in src>`
+
+ex. 
++ `./m src/01_math.asm`
++ `./m 01_math.asm`
++ `./m 01_math`
 
 all are valid
 
