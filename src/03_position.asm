@@ -12,7 +12,9 @@
 ; October 14, rough code
 ;
 
-%include    'along32.inc'
+%include    'along32.inc'    ; include along32
+
+; messages and prompts
 
 section .data
     prompt:  dd "> ", 0
@@ -20,6 +22,8 @@ section .data
     lsb_msg: dd "least significant bit positioned at ", 0
     msb_msg: dd "most significant bit positioned at ", 0
     bts_msg: dd " bits set", 0
+
+; reserve some memory to store bit locations
 
 segment .bss
     msb: resd 1              ; storage for the most significant bit
@@ -43,16 +47,14 @@ main:
 
     jmp bitLoop              ; jump to the bitLoop
 
+; main program logic
+
 significantBitFound:
     inc edx                  ; increment edx (significant bit counter)
-
     mov [lsb], ebx           ; set least significant bit location to the current bit index
-
     cmp byte [msb], 0        ; check if most significant bit is already set
     jne bitLoopLower         ; if it is, jump back to the bitloop
-
     mov [msb], ebx           ; set most significant bit to the current bit index
-
     jmp bitLoopLower         ; return to the bitloop
 
 bitLoop:
