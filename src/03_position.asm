@@ -4,7 +4,7 @@
 ; a.) Its most significant bit
 ; b.) Its least significant bit
 ; c.) The total number of bits set
-; Revision History: 
+; Revision History:
 ;
 ; October 21, change tabs to spaces
 ; October 20, remove debug messages, add comments, clean code
@@ -65,7 +65,7 @@ bitLoop:
 
 bitLoopLower:
     sub ebx, 1               ; subtract one from ebx
-    jnz bitLoop              ; if ebx is not zero, loop
+    jns bitLoop              ; if ebx is not signed, loop
 
 ; print out the determined bit positions
 
