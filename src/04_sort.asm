@@ -1,7 +1,7 @@
 ; Stone Tickle
 ; November 1, 2016
 ;
-; this utility reads in N integers and then prints them sorted
+; this utility reads in N integers and then prints them sorted using a standard bubble sort method
 ; Nov 1: began writing program
 ; Nov 2: changed push commands to mov commands with effective addresses, the program is functional
 ;        organized comments and cleaned up code

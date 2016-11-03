@@ -18,3 +18,8 @@ answer=A*B-(A+B)/(A-B)
 ##assignment 02 (02_average.asm):
 reads n integers and reports their average
 
+##assignment 03 (03_position.asm):
+this program reads in a 32 bit number in hex representation and returns the position of its most significant and least significant bits, and the total number of bits set
+
+##assignment 04 (04_sort.asm):
+this program reads n integers and then prints them out sorted in ascending order
