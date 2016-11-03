@@ -84,7 +84,6 @@ printStack:
     call Crlf                      ; print a newline
     call quit                      ; quit the program
 
-
 quit:
     mov ebx, 0                     ; return 0 status on exit - 'No Errors'
     mov eax, 1                     ; invoke SYS_EXIT (kernel opcode 1)
@@ -102,4 +101,3 @@ tooMuchError:
     call WriteString
     call Crlf
     call quit
-
