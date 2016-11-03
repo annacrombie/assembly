@@ -9,11 +9,11 @@
 %include 'along32.inc'
 
 section .data
-    prompt:  dd "> ",                            0
-    comma:   dd ", ",                            0
-    ini_msg: dd "enter N integers to be sorted", 0
-    noData:  dd "error, no data entered",        0
-    tooMuch: dd "error, too much data entered",  0
+    prompt:  dd "> ",                                                  0
+    comma:   dd ", ",                                                  0
+    ini_msg: dd "enter N integers to be sorted, terminated by a zero", 0
+    noData:  dd "error, no data entered",                              0
+    tooMuch: dd "error, too much data entered",                        0
 
 section .text
 
@@ -57,7 +57,7 @@ whileSort:                         ; psudeocode ->  (while edx === 0:)
 
         ifSwap:
             mov [esp+4+4*edi], ebx ; move the first bit into the second location
-            mov [esp+4*edi], eax   ; move the second bit into the first location
+            mov [esp+4*edi],   eax ; move the second bit into the first location
             inc edx                ; increment edx, showing that a sort operation happened
         endIf:
 
@@ -78,17 +78,17 @@ printStack:
     sub esi, 1                     ; subtract 1 from esi
     jnz printStack                 ; keep looping if esi isn't 0
 
-    pop eax      
-    call WriteInt
+    pop eax                        ; pop the last element off
+    call WriteInt                  ; and print it without a trailing comma!
 
     call Crlf                      ; print a newline
     call quit                      ; quit the program
 
 
 quit:
-    mov ebx, 0                    ; return 0 status on exit - 'No Errors'
-    mov eax, 1                    ; invoke SYS_EXIT (kernel opcode 1)
-    int 80h                       ; request an interrupt on libc using INT 80h.
+    mov ebx, 0                     ; return 0 status on exit - 'No Errors'
+    mov eax, 1                     ; invoke SYS_EXIT (kernel opcode 1)
+    int 80h                        ; request an interrupt on libc using INT 80h.
     ret
 
 noDataError:
