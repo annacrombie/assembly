@@ -68,7 +68,7 @@ whileSort:                         ; psudeocode ->  (while edx === 0:)
     cmp edx, 0                     ; compare edx with zero (to see if it was incremented during the for loop e.g. a sort operation happened)
     jne whileSort                  ; if it is not zero, then recheck the stack
 
-    add esi, 2                     ; re-adjust the counter so that the correct number of elements will be printed
+    add esi, 1                     ; re-adjust the counter so that the correct number of elements will be printed
     mov edx, comma                 ; place the comma message into edx for writing
 
 printStack:
@@ -77,6 +77,9 @@ printStack:
     call WriteString               ; write the comma
     sub esi, 1                     ; subtract 1 from esi
     jnz printStack                 ; keep looping if esi isn't 0
+
+    pop eax      
+    call WriteInt
 
     call Crlf                      ; print a newline
     call quit                      ; quit the program
