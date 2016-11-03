@@ -10,16 +10,26 @@ ex.
 
 all are valid
 
-##assignment 01 (01_math.asm):
-reads an int and
-produces
-answer=A*B-(A+B)/(A-B)
+###[assignment 1](https://github.com/annacrombie/assembly/blob/master/src/01_math.asm):
++ reads two integers, `a` and `b` and computes `a*b-(a+b)/(a-b)`
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573376)
 
-##assignment 02 (02_average.asm):
-reads n integers and reports their average
+###[assignment 2](https://github.com/annacrombie/assembly/blob/master/src/02_average.asm):
++ reads n integers and reports their average
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573384)
 
-##assignment 03 (03_position.asm):
-this program reads in a 32 bit number in hex representation and returns the position of its most significant and least significant bits, and the total number of bits set
+###[assignment 3](https://github.com/annacrombie/assembly/blob/master/src/03_position.asm):
++ reads a 32 bit number in hex representation and returns the position of its most significant and least significant bits, and the total number of bits set
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573392)
 
-##assignment 04 (04_intsort.asm):
-this program reads n integers and then prints them out sorted in ascending order
+###[assignment 4](https://github.com/annacrombie/assembly/blob/master/src/04_intsort.asm):
++ reads n integers and then prints them out sorted in ascending order
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573407)
+
+###[assignment 5](https://github.com/annacrombie/assembly/):
++ reads in 3 integers, a, b, and c and then computes x using the quadratic equation on `ax^2 + bx + c = 0`
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573413)
+
+###[assignment 6](https://github.com/annacrombie/assembly):
++ reads in n integers and determines the number of positive, negative and zero numbers in the numbers that have been read in.
++ original assignment [here](https://uab.instructure.com/courses/1445596/assignments/5573418)
