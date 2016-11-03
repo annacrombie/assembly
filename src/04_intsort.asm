@@ -5,6 +5,7 @@
 ; Nov 1: began writing program
 ; Nov 2: changed push commands to mov commands with effective addresses, the program is functional
 ;        organized comments and cleaned up code
+; Nov 3: finalized all code except for error when too much data is entered *ask T.A.
 
 %include 'along32.inc'
 
