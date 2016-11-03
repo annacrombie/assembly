@@ -47,7 +47,7 @@ whileSort:                         ; psudeocode ->  (while edx === 0:)
     forAllInStack:                 ; psudeocode -> (for i in stack:) (i is edi)
         mov ebx, [esp+4*edi]       ; store the first value in ebx    | the values are retrieved using effective addresses that
         mov eax, [esp+4+4*edi]     ; store the second vavlue in eax  | point to different elements on the stack.  since we are
-                                   ;                                 | working with 32 bit numbers, each number is 4 bits apart
+                                   ;                                 | working with 32 bit numbers, each number is 4 bytes apart
                                    ;                                 | so we refrence the first number by [esp+4*i] and the second
                                    ;                                 | by [esp+4+4*i] (i in this case is edi)
 

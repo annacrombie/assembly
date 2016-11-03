@@ -7,7 +7,7 @@ if [[ $1 = clean ]]; then
 else
 	fname="${1//src\//}"
 	fname="${fname//\.asm/}"
-	#echo "$fname"
+	echo "$fname"
 fi
 if [[ ! -f "src/along32.o" ]]; then
 	cd "$alongdir"
