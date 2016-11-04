@@ -20,6 +20,9 @@ main:
     call WriteString               ; write the message string
     call Crlf                      ; print a newline
     mov edx, prompt                ; move the prompt string into edx
+    xor ebx, ebx
+    xor ecx, ecx
+    xor esi, esi
 
 readLoop:
     call WriteString               ; write the prompt string
