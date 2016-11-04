@@ -9,7 +9,7 @@ section .data
     ini_msg: dd "enter N integers to be sorted, terminated by two zeroes", 0
     positive:  dd "positive numbers: ",                                    0
     negative: dd "negative numbers: ",                                     0
-    zero:    dd "zeroes: "
+    zero:    dd "zeroes: ", 0
 
 section .text
 
@@ -32,9 +32,9 @@ readLoop:
         jl countNegative
         jg countPositive
 
-    call WriteString
-    call ReadInt
-    jnz compare
+        call WriteString
+        call ReadInt
+        jnz countZero
 
     mov edx, positive
     call WriteString
@@ -72,4 +72,4 @@ countNegative:
 
 countZero:
     inc esi
-    jmp readLoop
+    jmp compare
