@@ -2,10 +2,14 @@
 ; November 1, 2016
 ;
 ; this utility reads in N integers and then prints them sorted using a standard bubble sort method
-; Nov 1: began writing program
-; Nov 2: changed push commands to mov commands with effective addresses, the program is functional
-;        organized comments and cleaned up code
-; Nov 3: finalized all code except for error when too much data is entered *ask T.A.
+; comment out lines 48 and 49 for full program funcionality (see revision 4)
+;
+; Revisions:
+; 1 - Nov. 1: * began writing program
+; 2 - Nov. 2: * changed push commands to mov commands with effective addresses, the program is functional
+;             * organized comments and cleaned up code
+; 3 - Nov. 3: * finalized all code except for error when too much data is entered
+; 4 - Nov. 4: * added overflow trigger to comply with assignment.  there is now an error when too much data is entered
 
 %include 'along32.inc'
 
@@ -15,7 +19,8 @@ section .data
     ini_msg: dd "enter N integers to be sorted, terminated by a zero", 0
     noData:  dd "error, no data entered",                              0
     tooMuch: dd "error, too much data entered",                        0
-    overflow_trigger dd 10
+
+    overflow_trigger dd 10         ; this is the number of integers that can be entered before an overflow error occurs
 
 section .text
 
@@ -37,11 +42,11 @@ readLoop:
     jmp readLoop                   ; keep looping
 
 beforeSort:
-    cmp esi, 0                     ; check if the esi counter was not incremented (e.g. no data was entered other than zero)
+    cmp esi, 0                     ; check if the counter (esi) was not incremented (e.g. no data was entered other than zero)
     je noDataError                 ; if it was not, then print an error
 
-    cmp esi, [overflow_trigger]
-    jge tooMuchError
+    cmp esi, [overflow_trigger]    ; check if the counter (esi) was incremented above the overflow_trigger
+    jge tooMuchError               ; if it was, then print an error
 
     sub esi, 2                     ; subtract 2 from the counter to prevent basically an index out of range error
 
@@ -95,13 +100,13 @@ quit:
     int 80h                        ; request an interrupt on libc using INT 80h.
     ret
 
-noDataError:
+noDataError:                       ; display an error and quit
     mov edx, noData
     call WriteString
     call Crlf                     
     call quit
 
-tooMuchError:
+tooMuchError:                      ; display an error and quit
     mov edx, tooMuch
     call WriteString
     call Crlf
