@@ -15,6 +15,7 @@ section .data
     ini_msg: dd "enter N integers to be sorted, terminated by a zero", 0
     noData:  dd "error, no data entered",                              0
     tooMuch: dd "error, too much data entered",                        0
+    overflow_trigger dd 10
 
 section .text
 
@@ -38,6 +39,9 @@ readLoop:
 beforeSort:
     cmp esi, 0                     ; check if the esi counter was not incremented (e.g. no data was entered other than zero)
     je noDataError                 ; if it was not, then print an error
+
+    cmp esi, [overflow_trigger]
+    jge tooMuchError
 
     sub esi, 2                     ; subtract 2 from the counter to prevent basically an index out of range error
 
